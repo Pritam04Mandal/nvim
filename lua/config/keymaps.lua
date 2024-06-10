@@ -58,6 +58,14 @@ keymap.set("n", "<C-w><right>", "<C-w>>")
 keymap.set("n", "<C-w><up>", "<C-w>+")
 keymap.set("n", "<C-w><down>", "<C-w>-")
 
+--commenting code
+
+-- Set up keymap for normal mode (current line)
+vim.api.nvim_set_keymap("n", "C-c", ":lua MiniComment.operator()<CR>_", { noremap = true, silent = true })
+
+-- Set up keymap for visual mode (selected lines)
+vim.api.nvim_set_keymap("x", "<C-c>", ":lua MiniComment.operator('visual')<CR>", { noremap = true, silent = true })
+
 -- Diagnostics
 keymap.set("n", "<C-j>", function()
 	vim.diagnostic.goto_next()
